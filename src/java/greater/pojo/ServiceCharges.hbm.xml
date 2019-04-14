@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.ServiceCharges" table="service_charges" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="serChargeId" type="string">
+            <column name="serChargeId" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="serviceCharge" type="java.lang.Double">
+            <column name="serviceCharge" precision="10" />
+        </property>
+        <property name="subTotal" type="java.lang.Double">
+            <column name="subTotal" precision="10" />
+        </property>
+        <property name="grandTotal" type="java.lang.Double">
+            <column name="grandTotal" precision="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="40" />
+        </property>
+        <property name="walkInGuestId" type="string">
+            <column name="walkInGuestId" length="30" />
+        </property>
+        <property name="productDescription" type="string">
+            <column name="productDescription" length="70" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+    </class>
+</hibernate-mapping>

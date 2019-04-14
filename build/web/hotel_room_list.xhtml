@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"            
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	    <meta charset="UTF-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+            <meta name="description" content="Grid and professional web design"/>
+            <meta name="keywords" content="Sadorstic Web App, professional web design"/>
+            <meta name="author" content="Greater"/>
+            <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+            <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/> -->
+            <link rel="stylesheet" href="./fontawesome-free-5.6.3-web/css/all.css"/>
+            <link rel="stylesheet" href="css/style_room.css" />            
+            <link rel="logo icon" href="./images/logo.png"/>
+            <title>Sadorstic Web App | Welcome</title>
+            
+            <style>
+                .input{
+                    width: 250px; padding: 12px; border-radius: 10px;                    
+                  }
+                #input_emp{
+                         display: grid;                          
+                          background: var(--primary);
+                          box-shadow: var(--shadow);                          
+                          padding:  20px;
+                          font-size: 13px;
+                        }
+                 .emp_detail{
+                            font-size: 28px;
+                            font-weight: bolder;
+                            text-align: center;
+                        }        
+                 .btn_emp{
+                     width: 250px; padding: 18px; border-radius: 10px; background-color: var(--dark);
+                     color: var(--primary); font-size:18px;                     
+                        }
+                        .use_logout{
+                     display: grid;                          
+                      background: var(--primary);
+                      box-shadow: var(--shadow);            
+                      grid-template-columns: repeat(1, 1fr);          
+                    }
+  
+             .image_dis{
+                     border: 1px solid var(--dark);   
+                     border-radius: 40px;
+                     margin-top: 2px;
+                     margin-bottom: -5px;
+                    }
+            </style>
+	</h:head>
+	<h:body>
+		<div class="wrapper">
+                     <!--logout navigation-->
+                    <div class="use_logout">
+                        <h:form>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                            
+                            <h:outputText value="Hi" style="text-decoration: none; color:#0000ff;"/> &nbsp;
+                            <h:graphicImage height="50" width="50"  id="image"  url="./pictures/#{sessionScope['sPicture']}" class="image_dis"/> &nbsp;                           
+                            <h:outputText value="#{sessionScope['sFirstName']}"/> &nbsp;
+                            <h:outputText value="#{sessionScope['sLastName']}"/> &nbsp;
+                            <h:outputText value="| |  As #{sessionScope['sPosition']}" style="text-decoration: none; color:#0000ff;"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <h:commandLink action="#{employeeLoginController.logout()}"  style="text-decoration: none; color:#ff0000;">Logout</h:commandLink>
+                        </h:form>    
+                    </div>
+			<!-- Navigation -->
+			<nav class="main-nav">
+				<ul>
+				    <li><a href="hotel_guest.xhtml">CREATE GUEST</a></li>
+                                    <li><a href="hotel_room.xhtml">CREATE ROOM</a></li>                                                                            
+                                    <li><a href="hotel_room_list.xhtml">ROOM LIST</a></li>
+                                    <li><a href="hotel_room_status.xhtml">ROOM STATUS</a></li>
+                                    <li><a href="hotel_room_servicecharge.xhtml">SERVICE CHARGE</a></li>
+                                    <li><a href="hotel_gmb.xhtml">MASTER BILL</a></li>
+				</ul>
+			</nav>
+                        
+			<!-- Top Container -->			
+			<header class="top-container">
+			    <div class="slider-container">
+                                <h:form  id="listemp">                                                 
+                                    <div id="input_emp">    
+                                         <div style="text-align:center; ">
+                                            <img src="./images/logo.png" widith="130" height="130"/><br/>
+                                            <h:outputText value="SADORSTIC INTEGRATED SERVICES" style="font-family:Arial Black; color: #0000ff; font-size:35px"/><br/>
+                                            <h:outputText value="serving you always" style="font-family:Time New Roman; color: #ff0000; font-style: italic; font-size:35px; font-weight: bold;"/>
+                                        </div>
+                                        <div class="emp_detail">                                            
+                                            <p:outputLabel value="ROOMS DETAILS LIST" />                                            
+                                        </div>
+                                        <br/>                                        
+                                        <p:dataTable id="rmTable" binding="#{table}" value="#{roomController.getRoomDetails()}" var="r" rowKey="#{roomController.roomIds}" rows="10" 
+                                                     paginator="true" >                                                                                                
+                                            
+                                            <p:column  headerText="ID" width="4%">                                                
+                                                <h:outputText value="#{table.rowIndex + 1}" />
+                                            </p:column>
+                                                                                        
+                                            <p:column headerText="RoomID" width="11%" filterBy="#{r.roomId}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.roomId}" />
+                                            </p:column>
+                                
+                                            <p:column headerText="Guest Email" width="14%" filterBy="#{r.guests.email}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.guests.email}"/>
+                                            </p:column>
+                
+                                            <p:column headerText="Room N0" width="4%" filterBy="#{r.roomNo}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.roomNo}" />
+                                            </p:column>
+                                
+                                            <p:column headerText="Room Type" filterBy="#{r.roomType}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.roomType}" />
+                                            </p:column>
+                
+                                            <p:column headerText="Room Rate" filterBy="#{r.roomRate}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.roomRate}" />
+                                            </p:column>
+                                        
+                                            <p:column headerText="Charge Rate" filterBy="#{r.chargeRate}"  filterMatchMode="contains">                                               
+                                                <h:outputText value="#{r.chargeRate}" />
+                                            </p:column>
+                                        
+                                            <p:column headerText="No of Night" width="4%" filterBy="#{r.noOfNight}"  filterMatchMode="contains">                                              
+                                                <h:outputText value="#{r.noOfNight}" />
+                                            </p:column>
+
+                                            <p:column headerText="VAT 5%" filterBy="#{r.vat5}"  filterMatchMode="contains">                                              
+                                                <h:outputText value="#{r.vat5}" />
+                                            </p:column>
+
+                                            <p:column headerText="Con. Tax 5%" filterBy="#{r.conTax5}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.conTax5}"/>
+                                            </p:column>
+                                                             
+                                            <p:column headerText="Deposite" filterBy="#{r.deposite}"  filterMatchMode="contains">                                                
+                                                <h:outputText value="#{r.deposite}"/>
+                                            </p:column>
+                                        
+                                            <p:column headerText="Balance" filterBy="#{r.balance}"  filterMatchMode="contains">                                               
+                                            <h:outputText value="#{r.balance}"/>
+                                            </p:column>                                                                                   
+
+                                            <p:column headerText="N0. of Guest in Room" width="4%" filterBy="#{r.noOfGuestInRoom}"  filterMatchMode="contains">                                               
+                                                <h:outputText value="#{r.noOfGuestInRoom}"/>
+                                            </p:column>                                                                                   
+
+                                            <p:column headerText="No of Luggage" width="4%" filterBy="#{r.noOfLuggage}"  filterMatchMode="contains">                                               
+                                                <h:outputText value="#{r.noOfLuggage}"/>
+                                            </p:column>                                                                                   
+
+                                            <p:column headerText="Reason for Lodging" width="8%" filterBy="#{r.reasonForLodging}"  filterMatchMode="contains">                                               
+                                                <h:outputText value="#{r.reasonForLodging}"/>
+                                            </p:column>                                                                                   
+
+                                            <p:column headerText="Created Date" filterBy="#{r.createdDate}"  filterMatchMode="contains">                                               
+                                                <h:outputText value="#{r.createdDate}"/>
+                                            </p:column>                                                                                   
+                                       </p:dataTable>                                        
+                                    </div>
+                                </h:form>
+			    </div>
+			</header>				
+
+			<!-- Boxes Section -->
+			<section class="boxes">
+				<div class="box">
+					<i class="fas fa-bed fa-4x"></i>
+					<h3>Room</h3>
+					<p>
+						We have spacious room, well equiped with necessary equipments and a greate roomservice personnel.  
+					</p>
+				</div>
+
+				<div class="box">
+					<i class="fas fa-chalkboard fa-4x"></i>
+					<h3>Hall</h3>
+					<p>
+					   We have spacious hall, in different sizes at avoidable prices with well equiped furniture   that can suit your events.
+				    </p>
+				</div>
+
+				<div class="box">
+					<i class="fas fa-utensils fa-4x"></i>
+					<h3>Restaurant</h3>
+					<p>We have varies fresh local and intercontinental dishes at avoidable rate.</p>
+				</div>
+
+				<div class="box">
+					<i class="fas fa-cocktail fa-4x"></i>
+					<h3>Bar</h3>
+					<p>We have numerious cool drinks of different brand and tast for your pleasure. </p>
+				</div>
+
+				<div class="box">
+					<i class="fas fa-person-booth fa-4x"></i>
+					<h3>Laundry</h3>
+					<p>
+					   Our dry clearing service is topt nosh with modern laundary equipment at avoidable rate. 
+					</p>
+				</div>
+
+				<div class="box">
+					<i class="fas fa-dumbbell fa-4x"></i>
+					<h3>Gym and Swimming</h3>
+					<p>
+						We have modern gym and swimming pool equipments at avoidable rate, working 24/7. 
+					</p>
+				</div>
+			</section>
+			
+			<!-- About us -->
+			<section class="home_aboutus">
+				<div class="image_aboutus">
+					<img src="./images/pic8.jpg"/>
+				</div>
+				<div class="text_aboutus">
+					<h1>About Us</h1>
+					<h2>
+						The company was duly registered with the Corporate Affairs Commission (CAC) in November 2015. We have been rendering professional in hospitality industry for more than a decade.<br/>
+                        Our core value and in-death services in modern hospitality professionalism covers the sales point outlets of hotel as well as the other departments that make up the hotel.
+					</h2>					
+				</div>
+			</section>
+
+			<!-- Our Vision & Mission -->
+			<section class="our_vision">
+				<div class="image_vision">
+					<img src="./images/pic9.jpg"/>
+				</div>
+				<div class="text_vision">
+					<h1>Our Vision and Mission</h1>
+					<h2>
+						To be an internationally recognized and highly respected professional firm that offers unique and in-depth hospitality services. <br/>
+                        Our mission is to render quality and excellent hospitality services that will surpass our client’s expectation and continuity of the business.
+					</h2>					
+				</div>
+			</section>
+
+			<!-- Contact us -->
+			<section class="home_contactus">				
+				<div class="text_contactus">
+					<h1>Contact Us</h1>
+					<h2>
+						24B, Pike Street, Off Obaleda Area, Lagos Island, Lagos State.
+                        <br/>+123 803 7832 554,  +123 805 5405 531 
+                        <br/>sadorstic@gmail.com, sadorstic@yahoo.com 
+					</h2>					
+				</div>
+			</section>
+
+			<!-- Footer -->
+			<footer>
+				<p>Copyright Sadorstic 2019. All Rights Reserved.</p>
+			</footer>
+		</div>
+		<!-- Wrapper Ends -->
+
+	</h:body>
+</html>

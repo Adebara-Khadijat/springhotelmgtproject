@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.Bars" table="bars" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="Id" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="barPriceLists" class="greater.pojo.BarPriceLists" fetch="select">
+            <column name="barPriceID" />
+        </many-to-one>
+        <many-to-one name="guests" class="greater.pojo.Guests" fetch="select">
+            <column name="email" length="80" />
+        </many-to-one>
+        <property name="walkInGuestId" type="string">
+            <column name="walkInGuestId" length="30" />
+        </property>
+        <property name="receiptNo" type="string">
+            <column name="receiptNo" length="30" />
+        </property>
+        <property name="roomNo" type="string">
+            <column name="roomNo" length="10" />
+        </property>
+        <property name="tableNo" type="string">
+            <column name="tableNo" length="10" />
+        </property>
+        <property name="qty" type="java.lang.Integer">
+            <column name="qty" />
+        </property>
+        <property name="mealType" type="string">
+            <column name="mealType" length="50" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="10" />
+        </property>
+        <property name="discountedRate" type="java.lang.Double">
+            <column name="discountedRate" precision="10" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="10" />
+        </property>
+        <property name="vat5" type="java.lang.Double">
+            <column name="vat5" precision="10" />
+        </property>
+        <property name="conTax5" type="java.lang.Double">
+            <column name="conTax5" precision="10" />
+        </property>
+        <property name="waiterName" type="string">
+            <column name="waiterName" length="50" />
+        </property>
+        <property name="guestSignature" type="string">
+            <column name="guestSignature" length="100" />
+        </property>
+        <property name="signture" type="string">
+            <column name="signture" length="100" />
+        </property>
+        <property name="authorizedDiscount" type="string">
+            <column name="authorizedDiscount" length="80" />
+        </property>
+        <property name="approvedDiscount" type="string">
+            <column name="approvedDiscount" length="80" />
+        </property>
+        <property name="times" type="string">
+            <column name="times" length="50" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+    </class>
+</hibernate-mapping>

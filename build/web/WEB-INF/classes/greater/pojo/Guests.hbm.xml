@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.Guests" table="guests" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="email" type="string">
+            <column name="email" length="80" />
+            <generator class="assigned" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="10" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="firstName" length="80" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="80" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="120" />
+        </property>
+        <property name="dateOfBirth" type="string">
+            <column name="dateOfBirth" length="80" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="20" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="80" />
+        </property>
+        <property name="occupation" type="string">
+            <column name="occupation" length="100" />
+        </property>
+        <property name="guestType" type="string">
+            <column name="guestType" length="50" />
+        </property>
+        <property name="companyName" type="string">
+            <column name="companyName" length="150" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="nationality" length="100" />
+        </property>
+        <property name="passportNo" type="string">
+            <column name="passportNo" length="50" />
+        </property>
+        <property name="residentPermitNo" type="string">
+            <column name="residentPermitNo" length="80" />
+        </property>
+        <property name="nextOfKinName" type="string">
+            <column name="nextOfKinName" length="80" />
+        </property>
+        <property name="nextOfKinAddress" type="string">
+            <column name="nextOfKinAddress" length="120" />
+        </property>
+        <property name="nextOfKinphone" type="string">
+            <column name="nextOfKinphone" length="80" />
+        </property>
+        <property name="arrivalDate" type="string">
+            <column name="arrivalDate" length="80" />
+        </property>
+        <property name="departureDate" type="string">
+            <column name="departureDate" length="80" />
+        </property>
+        <property name="timeCheckIn" type="string">
+            <column name="timeCheckIn" length="20" />
+        </property>
+        <property name="timeCheckOut" type="string">
+            <column name="timeCheckOut" length="20" />
+        </property>
+        <property name="receptionistOnDuty" type="string">
+            <column name="receptionistOnDuty" length="50" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+        <set name="restaurantses" table="restaurants" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="email" length="80" />
+            </key>
+            <one-to-many class="greater.pojo.Restaurants" />
+        </set>
+        <set name="guestMasterBillses" table="guest_master_bills" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="email" length="80" />
+            </key>
+            <one-to-many class="greater.pojo.GuestMasterBills" />
+        </set>
+        <set name="roomses" table="rooms" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="email" length="80" />
+            </key>
+            <one-to-many class="greater.pojo.Rooms" />
+        </set>
+        <set name="barses" table="bars" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="email" length="80" />
+            </key>
+            <one-to-many class="greater.pojo.Bars" />
+        </set>
+    </class>
+</hibernate-mapping>

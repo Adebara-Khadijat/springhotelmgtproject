@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.Rooms" table="rooms" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="roomId" type="string">
+            <column name="roomId" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="guests" class="greater.pojo.Guests" fetch="select">
+            <column name="email" length="80" />
+        </many-to-one>
+        <property name="roomNo" type="java.lang.Integer">
+            <column name="roomNo" />
+        </property>
+        <property name="roomType" type="string">
+            <column name="roomType" length="40" />
+        </property>
+        <property name="roomRate" type="java.lang.Double">
+            <column name="roomRate" precision="10" />
+        </property>
+        <property name="chargeRate" type="java.lang.Double">
+            <column name="chargeRate" precision="10" />
+        </property>
+        <property name="discountedRate" type="java.lang.Double">
+            <column name="discountedRate" precision="10" />
+        </property>
+        <property name="noOfNight" type="java.lang.Integer">
+            <column name="noOfNight" />
+        </property>
+        <property name="vat5" type="java.lang.Double">
+            <column name="vat5" precision="10" />
+        </property>
+        <property name="conTax5" type="java.lang.Double">
+            <column name="conTax5" precision="10" />
+        </property>
+        <property name="deposite" type="java.lang.Double">
+            <column name="deposite" precision="10" />
+        </property>
+        <property name="balance" type="java.lang.Double">
+            <column name="balance" precision="10" />
+        </property>
+        <property name="noOfGuestInRoom" type="java.lang.Integer">
+            <column name="noOfGuestInRoom" />
+        </property>
+        <property name="noOfLuggage" type="java.lang.Integer">
+            <column name="noOfLuggage" />
+        </property>
+        <property name="reasonForLodging" type="string">
+            <column name="reasonForLodging" length="100" />
+        </property>
+        <property name="arrivalDate" type="string">
+            <column name="arrivalDate" length="80" />
+        </property>
+        <property name="departureDate" type="string">
+            <column name="departureDate" length="80" />
+        </property>
+        <property name="timeCheckIn" type="string">
+            <column name="timeCheckIn" length="20" />
+        </property>
+        <property name="timeCheckOut" type="string">
+            <column name="timeCheckOut" length="20" />
+        </property>
+        <property name="authorizedDiscount" type="string">
+            <column name="authorizedDiscount" length="80" />
+        </property>
+        <property name="approvedDiscount" type="string">
+            <column name="approvedDiscount" length="80" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+        <set name="guestMasterBillses" table="guest_master_bills" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="roomId" length="30" />
+            </key>
+            <one-to-many class="greater.pojo.GuestMasterBills" />
+        </set>
+    </class>
+</hibernate-mapping>

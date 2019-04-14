@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.GuestMasterBills" table="guest_master_bills" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="guests" class="greater.pojo.Guests" fetch="select">
+            <column name="email" length="80" />
+        </many-to-one>
+        <many-to-one name="rooms" class="greater.pojo.Rooms" fetch="select">
+            <column name="roomId" length="30" />
+        </many-to-one>
+        <property name="accountNo" type="string">
+            <column name="accountNo" length="20" />
+        </property>
+        <property name="transactions" type="string">
+            <column name="transactions" length="50" />
+        </property>
+        <property name="charge" type="java.lang.Double">
+            <column name="charge" precision="10" />
+        </property>
+        <property name="credit" type="java.lang.Double">
+            <column name="credit" precision="10" />
+        </property>
+        <property name="checkedOutOn" type="string">
+            <column name="checkedOutOn" length="50" />
+        </property>
+        <property name="checkedOutBy" type="string">
+            <column name="checkedOutBy" length="50" />
+        </property>
+        <property name="times" type="string">
+            <column name="times" length="50" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

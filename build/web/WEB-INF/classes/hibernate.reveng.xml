@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="HotelMgtDB"/>
+  <table-filter match-name="restaurants"/>
+  <table-filter match-name="guests"/>
+  <table-filter match-name="audit_trail_logins"/>
+  <table-filter match-name="bar_price_lists"/>
+  <table-filter match-name="employees"/>
+  <table-filter match-name="service_charges"/>
+  <table-filter match-name="bars"/>
+  <table-filter match-name="guest_master_bills"/>
+  <table-filter match-name="room_status"/>
+  <table-filter match-name="restaurant_price_lists"/>
+  <table-filter match-name="rooms"/>
+</hibernate-reverse-engineering>

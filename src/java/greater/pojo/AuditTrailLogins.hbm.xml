@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.AuditTrailLogins" table="audit_trail_logins" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="auditTrailLoginId" type="java.lang.Integer">
+            <column name="audit_trail_login_id" />
+            <generator class="identity" />
+        </id>
+        <property name="email" type="string">
+            <column name="email" length="80" />
+        </property>
+        <property name="operation" type="string">
+            <column name="operation" length="100" />
+        </property>
+        <property name="userRoleId" type="string">
+            <column name="user_role_id" length="20" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="80" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="80" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="80" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="10" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="40" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="100" />
+        </property>
+        <property name="position" type="string">
+            <column name="position" length="40" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="created_date" length="80" />
+        </property>
+    </class>
+</hibernate-mapping>

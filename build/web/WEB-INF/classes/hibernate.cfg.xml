@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/HotelMgtDB?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="greater/pojo/AuditTrailLogins.hbm.xml"/>
+    <mapping resource="greater/pojo/Rooms.hbm.xml"/>
+    <mapping resource="greater/pojo/Bars.hbm.xml"/>
+    <mapping resource="greater/pojo/BarPriceLists.hbm.xml"/>
+    <mapping resource="greater/pojo/ServiceCharges.hbm.xml"/>
+    <mapping resource="greater/pojo/RoomStatus.hbm.xml"/>
+    <mapping resource="greater/pojo/GuestMasterBills.hbm.xml"/>
+    <mapping resource="greater/pojo/RestaurantPriceLists.hbm.xml"/>
+    <mapping resource="greater/pojo/Restaurants.hbm.xml"/>
+    <mapping resource="greater/pojo/Employees.hbm.xml"/>
+    <mapping resource="greater/pojo/Guests.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

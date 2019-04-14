@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.BarPriceLists" table="bar_price_lists" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="barPriceId" type="java.lang.Integer">
+            <column name="barPriceID" />
+            <generator class="identity" />
+        </id>
+        <property name="drinkType" type="string">
+            <column name="drinkType" length="50" />
+        </property>
+        <property name="drinkDescription" type="string">
+            <column name="drinkDescription" length="100" />
+        </property>
+        <property name="vat5" type="java.lang.Double">
+            <column name="vat5" precision="10" />
+        </property>
+        <property name="conTax5" type="java.lang.Double">
+            <column name="conTax5" precision="10" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="10" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+        <set name="barses" table="bars" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="barPriceID" />
+            </key>
+            <one-to-many class="greater.pojo.Bars" />
+        </set>
+    </class>
+</hibernate-mapping>

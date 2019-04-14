@@ -1,0 +1,254 @@
+/* CSS Variables */
+/* define a scope of :root */
+:root{
+  --primary: #ddd;
+  --dark: #333;
+  --light: #fff;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+html{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+}
+
+body{
+  background: #ccc;
+  margin: 30px 50px;
+  line-height: 1.4;
+}
+
+/* btn is Global class */
+.btn{
+  background: var(--dark);
+  color: var(--light);
+  /* rem is more responsive. 1 rem is equal to root html font size of 16px; */
+  padding: 0.6rem 1.3rem;
+  text-decoration: none;
+  border: 0;
+}
+
+img{
+  /* this will make all images to stay within their container */
+  max-width: 100%;
+}
+
+/* .wrapper is the container for all the element in the body */
+.wrapper{
+  display: grid;
+  grid-gap: 20px;
+}
+
+
+/* Navigation */
+.main-nav ul{
+  padding: 0;
+  list-style: none;    
+}
+
+.main-nav ul li{
+      float: left;
+      width: 70px;      
+      text-align: center;
+      line-height: 30px;
+      position: relative;
+   }
+
+.main-nav  ul li a{
+  background: var(--primary);
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+}
+
+.main-nav a:hover{
+  background: var(--dark);
+  color: var(--light);
+}
+
+.main-nav ul ul{
+    display: none;          
+    position: absolute;    
+}
+
+.main-nav ul li:hover > ul{
+    display: block;
+}
+
+/* Top Container */
+.top-container{
+  display: grid;     
+}
+
+/* slide */
+div > .slider-container > .slide{
+/*position: absolute; will make all .slide class container to occupy same space  */
+  position: absolute;  
+  width: 91.5vw; 
+  height: 100vh; 
+  overflow: hidden;
+}
+
+.slide .slide_6 img{
+    box-shadow: var(--shadow);
+}
+
+/*Boxes  */
+.boxes{
+  display:grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.box{
+  background: var(--primary);
+  text-align: center;
+  padding:1.5rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+/*AboutUs*/
+.home_aboutus{  
+  display: grid;
+  height:  300px;
+  background: var(--primary);
+  box-shadow: var(--shadow);
+  grid-template-columns: repeat(2, 1fr);
+  padding:  20px;  
+}
+
+.home_aboutus .image_aboutus{
+  padding: 20px 0 0 10px;
+}
+
+.home_aboutus .text_aboutus{
+  margin-left: -150px;
+}
+
+.home_aboutus .text_aboutus h1{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 2px;
+}
+
+/*Vision & Mission*/
+.our_vision{  
+  display: grid;
+  height:  300px;
+  background: var(--primary);
+  box-shadow: var(--shadow);
+  grid-template-columns: repeat(2, 1fr);
+  padding:  20px;  
+}
+
+.our_vision .image_vision img{
+  height: 290px;  
+}
+
+.our_vision .text_vision{
+  margin-left: -150px;
+}
+
+.our_vision .text_vision h1{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 2px;
+}
+
+
+/*ContactUs*/
+.home_contactus .text_contactus{  
+  display: grid;
+  height:  200px;
+  background: var(--primary);
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding:  20px;  
+}
+
+.home_contactus .text_contactus h1{
+  margin-bottom: -2px;
+  font-size: 30px;
+}
+
+.home_contactus .text_contactus h2{
+  margin-top: -2px;
+}
+
+/* Footer */
+footer{
+  margin-top: 2rem;
+  background: var(--dark);
+  color: var(--light);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 700px){
+    .main-nav ul{
+    grid-template-columns: 1fr;
+  }
+
+  .btnlr{
+   top: 90%; 
+}
+
+.boxes{
+   grid-template-columns: 1fr;
+}
+
+.home_aboutus .image_aboutus{
+  width: 120px;
+  margin-left: -10px;
+}
+
+.home_aboutus .text_aboutus{
+  font-size: 0.6rem;
+  margin-left: -10px;
+  line-height: 0.9rem;
+}
+
+
+.home_aboutus .text_aboutus h1{
+  font-size: 1.6rem;  
+}
+
+.our_vision .image_vision img{
+  width: 120px;
+  height: 150px;
+  margin-left: -10px; 
+}
+
+.our_vision .text_vision{
+  font-size: 0.6rem;
+  margin-left: -10px;
+  line-height: 1rem;
+}
+
+.our_vision .text_vision h1{
+ font-size: 1rem;  
+}
+
+
+
+.home_contactus .text_contactus h1{
+  font-size: 1.6rem;    
+}
+
+.home_contactus .text_contactus h2{
+  font-size: 1rem;  
+  /*line-height: 1rem;*/
+}
+  
+}
+
+@media (max-width: 500px){
+  
+}

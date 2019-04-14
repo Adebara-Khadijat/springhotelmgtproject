@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2019 12:04:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="greater.pojo.RoomStatus" table="room_status" catalog="hotelmgtdb" optimistic-lock="version">
+        <id name="roomStatusId" type="java.lang.Integer">
+            <column name="roomStatusId" />
+            <generator class="identity" />
+        </id>
+        <property name="roomNo" type="java.lang.Integer">
+            <column name="roomNo" />
+        </property>
+        <property name="roomType" type="string">
+            <column name="roomType" length="20" />
+        </property>
+        <property name="statesOfTheRoom" type="string">
+            <column name="statesOfTheRoom" length="20" />
+        </property>
+        <property name="tv" type="string">
+            <column name="tv" length="10" />
+        </property>
+        <property name="intecom" type="string">
+            <column name="intecom" length="10" />
+        </property>
+        <property name="ac" type="string">
+            <column name="ac" length="10" />
+        </property>
+        <property name="fridge" type="string">
+            <column name="fridge" length="10" />
+        </property>
+        <property name="lightingPoint" type="string">
+            <column name="lightingPoint" length="10" />
+        </property>
+        <property name="beding" type="string">
+            <column name="beding" length="10" />
+        </property>
+        <property name="furniture" type="string">
+            <column name="furniture" length="10" />
+        </property>
+        <property name="toilet" type="string">
+            <column name="toilet" length="10" />
+        </property>
+        <property name="toiletries" type="string">
+            <column name="toiletries" length="10" />
+        </property>
+        <property name="remarks" type="string">
+            <column name="remarks" length="10" />
+        </property>
+        <property name="createdDate" type="string">
+            <column name="createdDate" length="80" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,197 @@
+create database HotelMgtDB;
+use HotelMgtDB;
+use this to enter mysql database on the command line: mysql -u root;
+
+create table employees(
+email varchar(100) primary key,
+user_role_id varchar(20),
+first_name varchar(80),
+last_name  varchar(80),
+password varchar(80),
+sex varchar(10),
+phone varchar(40),
+address varchar(100),
+position varchar(40),
+picture varchar(100),
+hire_date varchar(80),
+created_date varchar(80)
+);
+						
+insert into employees values('khadijat@gmail.com','Super Admin', 'Khadijat','Adebara', '11', 'Female', '08038987654', '24, Pike Street, Lagos Island',  'Super Admin', 'image.png', '2019-09-01', '2019-01-31');
+
+create table audit_trail_logins(
+audit_trail_login_id int(11) primary key  AUTO_INCREMENT,
+email varchar(80),
+operation varchar(100),
+user_role_id varchar(20),
+first_name varchar(80),
+last_name  varchar(80),
+password varchar(80),
+sex varchar(10),
+phone varchar(40),
+address varchar(100),
+position varchar(40),
+created_date varchar(80)
+);
+
+create table guests(
+email varchar(80) primary key,
+title varchar(10),
+firstName varchar(80),
+lastName varchar(80),
+address varchar(120),
+dateOfBirth varchar(80),
+sex varchar(20),
+phone varchar(80),
+occupation varchar(100),
+guestType varchar(50),
+companyName varchar(150),
+nationality varchar(100),
+passportNo varchar(50),
+residentPermitNo varchar(80),
+nextOfKinName varchar(80),
+nextOfKinAddress varchar(120),
+nextOfKinphone varchar(80),
+arrivalDate varchar(80),
+departureDate varchar(80),
+timeCheckIn varchar(20),
+timeCheckOut varchar(20),
+receptionistOnDuty varchar(50),
+createdDate varchar(80)
+);
+
+create table rooms(
+roomId varchar(30) primary key,
+roomNo int(11), 
+roomType varchar(40),
+roomRate double(10,2),
+chargeRate double(10,2),
+discountedRate double(10,2),
+noOfNight int,
+vat5  double(10,2),
+conTax5 double(10,2),
+deposite double(10,2),
+balance double(10,2),
+noOfGuestInRoom int,
+noOfLuggage int,
+reasonForLodging varchar(100),
+arrivalDate varchar(80),
+departureDate varchar(80),
+timeCheckIn varchar(20),
+timeCheckOut varchar(20),
+email varchar(80), index (email), constraint email_room_fk foreign key(email)  REFERENCES guests(email),
+authorizedDiscount varchar(80),
+approvedDiscount varchar(80),
+createdDate varchar(80)
+);
+
+create table room_status(
+roomStatusId int(11) primary key  AUTO_INCREMENT,
+roomNo int(11),
+roomType varchar(20),
+statesOfTheRoom varchar(20),
+tv varchar(10),
+intecom varchar(10),
+ac varchar(10),
+fridge varchar(10),
+lightingPoint varchar(10),
+beding varchar(10),
+furniture varchar(10),
+toilet varchar(10),
+toiletries varchar(10),
+remarks varchar(10),
+createdDate varchar(80)
+);
+
+create table restaurant_price_lists(
+restaurantPriceID int(11) primary key  AUTO_INCREMENT,
+foodType varchar(50),
+foodDescription varchar(100),
+vat5 double(10,2),
+conTax5 double(10,2), 
+amount double(10,2),
+createdDate varchar(80)
+);
+
+create table restaurants(
+Id varchar(30) primary key,
+email varchar(80), index (email), constraint guest_serv_fk foreign key(email) REFERENCES guests(email),
+walkInGuestId varchar(30),
+receiptNo varchar(30),
+roomNo varchar(10),
+tableNo varchar(10),
+qty int,
+restaurantPriceID int(11) , index (restaurantPriceID), constraint guest_room_fk foreign key(restaurantPriceID) REFERENCES restaurant_price_lists(restaurantPriceID),
+mealType varchar(50),
+amount double(10,2),
+discountedRate double(10,2),
+total double(10,2),
+vat5 double(10,2),
+conTax5 double(10,2),
+waiterName varchar(50),  
+guestSignature varchar(100),
+signture varchar(100),
+authorizedDiscount varchar(80),
+approvedDiscount varchar(80),
+times varchar(50),
+createdDate varchar(80)
+);
+
+create table service_charges(
+serChargeId varchar(30) primary key,
+serviceCharge double(10,2),
+subTotal double(10,2) ,
+grandTotal double(10,2),
+email varchar(40),
+walkInGuestId varchar(30),
+productDescription varchar(70),
+createdDate varchar(80)
+);
+
+create table bar_price_lists(
+barPriceID int(11) primary key  AUTO_INCREMENT,
+drinkType varchar(50),
+drinkDescription varchar(100),
+vat5 double(10,2),
+conTax5 double(10,2), 
+amount double(10,2),
+createdDate varchar(80)
+);
+
+create table bars(
+Id varchar(30) primary key,
+email varchar(80), index (email), constraint guest_bar_fk foreign key(email) REFERENCES guests(email),
+walkInGuestId varchar(30),
+receiptNo varchar(30),
+roomNo varchar(10),
+tableNo varchar(10),
+qty int,
+barPriceID int(11) , index (barPriceID), constraint bar_price_fk foreign key(barPriceID) REFERENCES bar_price_lists(barPriceID),
+mealType varchar(50),
+amount double(10,2),
+discountedRate double(10,2),
+total double(10,2),
+vat5 double(10,2),
+conTax5 double(10,2),
+waiterName varchar(50),  
+guestSignature varchar(100),
+signture varchar(100),
+authorizedDiscount varchar(80),
+approvedDiscount varchar(80),
+times varchar(50),
+createdDate varchar(80)
+);
+
+create table guest_master_bills(
+id varchar(30) primary key,
+email varchar(80), index (email), constraint guest_master_fk foreign key(email) REFERENCES guests(email),
+roomId varchar(30), index (roomId), constraint room_id_fk foreign key(roomId) REFERENCES rooms(roomId),
+accountNo varchar(20),
+transactions varchar(50),
+charge double(10,2),
+credit double(10,2),
+checkedOutOn varchar(50),
+checkedOutBy varchar(50),
+times varchar(50),
+createdDate varchar(50)
+);
